@@ -1,0 +1,102 @@
+ <h2>Add Task</h2>
+ <hr>
+ <form method="post" action="add" enctype="multipart/form-data">
+   <!-- <div class="row">
+       <div class="form-group col-sm-3 checkbox">
+          <label>
+            <input type="checkbox" value="" checked>
+             Completed
+          </label>
+        </div>
+   </div> -->
+   <div class="row">
+      <div class="form-group col-sm-3">
+        <label for="username">User Name</label>
+        <input class="form-control input-default" name="username" id="username" type="text" required>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="form-group col-sm-3">
+        <label for="email">Email</label>
+        <input class="form-control input-email" name="email" id="email" type="text" required>
+      </div>
+   </div>
+   <div class="row">
+     <div class="form-group col-sm-8">
+      <label for="task">Task</label>
+      <input class="form-control input-default" name="Task" id="task" type="text" required>
+     </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-xs-8">
+        <label for="taskImage">Add Image</label>
+        <input type="file" class="form-control-file" name="taskImage" id="taskImage" aria-describedby="fileHelp" onchange="readURL(this);">
+      </div>
+    </div>
+  <button type="button" class="btn-default btn" data-toggle="modal" data-target="#myModal" id="preview">Preview</button>
+  <button type="submit" class="btn-primary btn">Add Task</button>
+   <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Preview of task</h4>
+        </div>
+        <div class="modal-body">
+            <h4>User:</h4>
+            <p id="username_preview"></p>
+            <h4>Email:</h4>
+            <p id="email_preview"></p>
+            <h4>Task:</h4>
+            <p id="task_preview"></p>
+          <img id="imageTask" src="#" alt="Task Image"/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Edit</button>
+          <button type="submit" class="btn-primary btn">Add Task</button>
+        </div>
+      </div>
+      <!-- End of Modal content-->
+
+    </div>
+  </div>
+  <!-- End of Modal -->
+</form>
+
+<!-- http://jsbin.com/uboqu3/1/edit?html,js,output -->
+<script type="text/javascript">
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imageTask')
+                .attr('src', e.target.result)
+                .width(320)
+                .height();
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+
+$('#preview').on('click', function (e) {
+
+    var username = document.getElementById("username").value;
+    document.getElementById("username_preview").innerHTML = username;
+
+    var email = document.getElementById("email").value;
+    document.getElementById("email_preview").innerHTML = email;
+
+    var task = document.getElementById("task").value;
+    document.getElementById("task_preview").innerHTML = task;
+
+})
+
+
+</script>

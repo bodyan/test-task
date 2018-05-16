@@ -1,0 +1,97 @@
+ <h2>Edit Task</h2>
+ <hr>
+ <form method="post" action="edit2" class="span 12">
+   <!-- <div class="row">
+       <div class="form-group col-sm-3 checkbox">
+          <label>
+            <input type="checkbox" value="" checked>
+             Completed
+          </label>
+        </div>
+   </div> -->
+   <div class="row">
+      <div class="form-group col-sm-3">
+        <label for="status">Status:</label><br>
+          <input type="checkbox" name="status" value="completed" <?=(($this->task['status'] == 'completed') ? 'checked' : ''); ?>>
+            <?=(($this->task['status'] == 'completed') ? 'Completed' : 'Incomplete'); ?>
+     </div>
+   </div>
+   <div class="row">
+      <div class="form-group col-sm-3">
+        <label for="username">User Name</label>
+        <input class="form-control input-default" name="username" id="username" type="text" value="<?=$this->task['username'];?>" required>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="form-group col-sm-3">
+        <label for="email">Email</label>
+        <input class="form-control input-email" name="email" id="email" type="text" value="<?=$this->task['email'];?>" required>
+      </div>
+   </div>
+   <div class="row">
+     <div class="form-group col-sm-8">
+      <label for="task">Task</label>
+      <input class="form-control input-default" name="Task" id="task" type="text" value="<?=$this->task['text'];?>" required>
+     </div>
+    </div>
+  <a href="show" class="btn btn-danger">
+    <span class="glyphicon glyphicon-exit"></span>Cancel
+  </a>
+  <button type="button" class="btn-default btn" data-toggle="modal" data-target="#myModal" id="preview">Preview</button>
+  <button type="submit" class="btn-primary btn">Edit</button>
+   <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Preview of task</h4>
+        </div>
+        <div class="modal-body">
+            <h4>User:</h4>
+            <p id="username_preview"></p>
+            <h4>Email:</h4>
+            <p id="email_preview"></p>
+            <h4>Task:</h4>
+            <p id="task_preview"></p>
+          <img id="imageTask" src="value="/public/img/<?=$this->task['img_real_name'];?>" alt="Task Image"/>
+        </div>
+        <div class="modal-footer">
+          <input type="hidden" name="id" value="<?=$this->task['id'];?>">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn-primary btn">Edit</button>
+        </div>
+      </div>
+      <!-- End of Modal content-->
+
+    </div>
+  </div>
+  <!-- End of Modal -->
+</form>
+
+<!-- http://jsbin.com/uboqu3/1/edit?html,js,output -->
+<script type="text/javascript">
+$('#preview').on('click', function (e) {
+
+    var username = document.getElementById("username").value;
+    document.getElementById("username_preview").innerHTML = username;
+
+    var email = document.getElementById("email").value;
+    document.getElementById("email_preview").innerHTML = email;
+
+    var task = document.getElementById("task").value;
+    document.getElementById("task_preview").innerHTML = task;
+
+})
+
+
+</script>
+<br>
+<br>
+
+
+
+

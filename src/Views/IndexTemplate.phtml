@@ -1,0 +1,81 @@
+<ul class="pagination span12">
+<?php
+for ($i=1; $i <= $this->pagination['pages'] ; $i++) {
+    $li = '<li';
+    $li .= ($this->pagination['page'] == $i) ? ' class="active">':'>';
+    $li .= '<a href="/index/show?page='.$i;
+    $li .= (!empty($this->order)) ? '&sortby='.$this->order :'';
+    $li .= '">'.$i.'</a></li>';
+    echo $li;
+  }
+
+?>
+</ul>
+
+<div class="container">
+  <table class="table">
+      <thead>
+        <tr>
+          <th class="col-md-1">
+          </th>
+          <th class="col-md-2 text-center">Status
+              <a href="/index/show?page=<?=$this->pagination['page'];?>&sortby=statusdesc">
+                  <span class="glyphicon glyphicon-triangle-bottom pull-right"></span>
+              </a>
+              <a href="/index/show?page=<?=$this->pagination['page'];?>&sortby=status">
+                  <span class="glyphicon glyphicon-triangle-top pull-right"></span>
+              </a>
+          </th>
+          <th class="col-md-2 text-center">User Name
+              <a href="/index/show?page=<?=$this->pagination['page'];?>&sortby=userdesc">
+                  <span class="glyphicon glyphicon-triangle-bottom pull-right"></span>
+              <a>
+              <a href="/index/show?page=<?=$this->pagination['page'];?>&sortby=user">
+                  <span class="glyphicon glyphicon-triangle-top pull-right"></span>
+              <a>
+         </th>
+          <th class="col-md-2 text-center">Email
+              <a href="/index/show?page=<?=$this->pagination['page'];?>&sortby=emaildesc">
+                  <span class="glyphicon glyphicon-triangle-bottom pull-right"></span>
+              <a>
+              <a href="/index/show?page=<?=$this->pagination['page'];?>&sortby=email">
+                  <span class="glyphicon glyphicon-triangle-top pull-right"></span>
+              <a>
+          </th>
+          <th class="col-md-7 text-center">Task
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php
+        foreach ($this->tasks as $task) :
+          ?>
+        <tr>
+          <td><img src="/public/img/<?=$task['img_real_name'];?>"
+              alt="<?=$task['username'];?>"></td>
+          <td class="text-center"><?=$task['status'];?></td>
+          <td class="text-center"><?=$task['username'];?></td>
+          <td class="text-center"><?=$task['email'];?></td>
+          <td class="text-center"><?=$task['text'];?></td>
+        </tr>
+       <?php endforeach;?>
+      </tbody>
+    </table>
+</div>
+
+<ul class="pagination span12">
+<?php
+for ($i=1; $i <= $this->pagination['pages'] ; $i++) {
+    $li = '<li';
+    $li .= ($this->pagination['page'] == $i) ? ' class="active">':'>';
+    $li .= '<a href="/index/show?page='.$i;
+    $li .= (!empty($this->order)) ? '&sortby='.$this->order :'';
+    $li .= '">'.$i.'</a></li>';
+    echo $li;
+  }
+
+?>
+</ul>
+
+
+

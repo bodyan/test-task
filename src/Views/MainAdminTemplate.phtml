@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Beejee Tasks</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../public/css/custom.css" rel="stylesheet">
+    <script src="../public/js/jquery.min.js"></script>
+  <script src="../public/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    <!-- Navigation -->
+      <nav class="navbar navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">BeeJee Tasks</a>
+            </div>
+            <form class="navbar-form navbar-right" role="search">
+              <?php if(Session::get('loggedIn') == true):?>
+                <a href="../admin/logout" class="btn btn-danger">
+                    <span class="glyphicon glyphicon glyphicon-user"></span>
+                    Logout
+                </a>
+              <?php endif; ?>
+            </form>
+          </div>
+      </nav>
+
+      <!-- Page Content -->
+    <?=$this->content();?>
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+  </body>
+
+</html>
